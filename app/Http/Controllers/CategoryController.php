@@ -15,13 +15,13 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return CategoryShowResource::collection(Category::all()->whereNull('parent_id'));
+        return Category::all();
     }
 
     public function show(int $id)
     {
         $category = Category::with('products')->findOrFail($id);
-        return CategoryShowResource::make();
+        return CategoryShowResource::make($category);
     }
 
     public function update(CategoryUpdateRequest $request, Category $category)
