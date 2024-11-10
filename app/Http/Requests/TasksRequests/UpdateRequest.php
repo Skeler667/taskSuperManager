@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\UserRequests;
+namespace App\Http\Requests\TasksRequests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,10 +22,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string',
-            'email' => 'string',
-            'password' => 'string',
-            'taskId' => 'nullable',
+            'userId' => 'int',
+            'description' => 'string',
+            'status' => 'int'
         ];
     }
 }
