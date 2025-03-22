@@ -1,11 +1,9 @@
 services:
     laravel.test:
         build:
-            context: './vendor/laravel/sail/runtimes/8.3'
-            dockerfile: Dockerfile
-            args:
-                WWWGROUP: '${WWWGROUP}'
-        image: 'sail-8.3/app'
+            context: .
+            dockerfile: Dockerfile  # Убедитесь, что Dockerfile правильный
+        image: sail-8.3/app  # Используйте образ с нужной версией PHP
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -47,9 +45,11 @@ services:
                 - '-p${DB_PASSWORD}'
             retries: 3
             timeout: 5s
+
 networks:
     sail:
         driver: bridge
+
 volumes:
     sail-mysql:
         driver: local
