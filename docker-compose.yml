@@ -1,9 +1,6 @@
 services:
     laravel.test:
-        build:
-            context: .
-            dockerfile: Dockerfile  # Убедитесь, что Dockerfile правильный
-        image: sail-8.3/app  # Используйте образ с нужной версией PHP
+        image: 'laravel/sail:1.10'  # официальный образ Laravel Sail
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -21,6 +18,7 @@ services:
             - sail
         depends_on:
             - mysql
+
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
